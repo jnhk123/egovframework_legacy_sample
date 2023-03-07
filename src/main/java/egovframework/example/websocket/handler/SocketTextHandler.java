@@ -1,12 +1,12 @@
 package egovframework.example.websocket.handler;
 
+import java.util.Set;
+import java.util.concurrent.ConcurrentHashMap;
+
 import org.springframework.web.socket.CloseStatus;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
-
-import java.util.Set;
-import java.util.concurrent.ConcurrentHashMap;
 
 public class SocketTextHandler extends TextWebSocketHandler {
 
@@ -19,16 +19,16 @@ public class SocketTextHandler extends TextWebSocketHandler {
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-    	System.out.println("===> 먼데");
         String payload = message.getPayload();
         System.out.println(payload);
-//        for (WebSocketSession s : sessions) {
-//        	s.sendMessage(new TextMessage("하이이이이이"));
-//        }
+        for (WebSocketSession s : sessions) {
+        	s.sendMessage(new TextMessage("test"));
+        }
     }
 
     @Override
     public void afterConnectionClosed(WebSocketSession session, CloseStatus status) throws Exception {
         sessions.remove(session);
     }
+
 }

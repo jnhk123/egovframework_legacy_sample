@@ -20,7 +20,7 @@ public class TestServiceImpl extends EgovAbstractServiceImpl implements TestServ
 	@Override
 	public Map<String, Object> selectMethod() {
 		Map<String, Object> map = new LinkedHashMap<String, Object>();
-//		map.put("data", testMapper.selectTest());
+		map.put("data", "gd");
 		return map;
 	}
 

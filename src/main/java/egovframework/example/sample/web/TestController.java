@@ -36,5 +36,11 @@ public class TestController {
 		return ResponseEntity.ok(testService.selectMethod());
 	}
 	
+	@ResponseBody
+	@RequestMapping(value = "/data/data", method = RequestMethod.GET)
+	public ResponseEntity<?> getData() {
+		return ResponseEntity.ok(testService.selectMethod());
+	}
+	
 	
 }

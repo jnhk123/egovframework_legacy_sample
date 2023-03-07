@@ -12,8 +12,8 @@ import egovframework.example.websocket.handler.SocketTextHandler;
 public class WebSocketConfig implements WebSocketConfigurer {
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(new SocketTextHandler(), "/socket")
-                .setAllowedOrigins("*")
+        registry.addHandler(new SocketTextHandler(), "ws/socket")
+                .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
 }
