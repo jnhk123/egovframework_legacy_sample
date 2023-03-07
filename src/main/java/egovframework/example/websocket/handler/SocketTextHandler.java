@@ -8,22 +8,28 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
+import egovframework.example.websocket.ReceiveMessage;
+import egovframework.example.websocket.ReceiveQueue;
+
 public class SocketTextHandler extends TextWebSocketHandler {
 
     private final Set<WebSocketSession> sessions = ConcurrentHashMap.newKeySet();
+    private final ReceiveQueue receiveQueue;
 
-    @Override
+    public SocketTextHandler(ReceiveQueue receiveQueue) {
+    	this.receiveQueue = receiveQueue;
+	}
+
+	@Override
     public void afterConnectionEstablished(WebSocketSession session) throws Exception {
         sessions.add(session);
     }
 
     @Override
     protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-        String payload = message.getPayload();
-        System.out.println(payload);
-        for (WebSocketSession s : sessions) {
-        	s.sendMessage(new TextMessage("test"));
-        }
+    	ReceiveMessage receiveMessage = new ReceiveMessage();
+    	receiveMessage.setMessage(message.getPayload());
+    	receiveQueue.add(receiveMessage); 
     }
 
     @Override

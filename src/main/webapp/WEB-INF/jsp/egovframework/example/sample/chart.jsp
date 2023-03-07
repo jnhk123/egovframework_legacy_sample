@@ -10,7 +10,6 @@
 
 <script src="<c:url value='/resources/js/websocket.js'/>"></script>
 
-
 </head>
 <body>
 
@@ -25,7 +24,7 @@
 
 	sock.onmessage = function(e) {
 		console.log('message', e.data);
-		sock.close();
+// 		sock.close();
 	};
 
 	sock.onclose = function() {
