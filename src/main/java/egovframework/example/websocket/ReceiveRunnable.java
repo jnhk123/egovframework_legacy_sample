@@ -11,6 +11,7 @@ public class ReceiveRunnable implements Runnable {
 	@Override
 	public void run() {
 		System.out.println(receiveMessage.getMessage());
+		Thread.interrupted();
 	}
 
 }
