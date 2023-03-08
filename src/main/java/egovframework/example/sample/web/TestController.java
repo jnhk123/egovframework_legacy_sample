@@ -18,18 +18,6 @@ public class TestController {
 		this.testService = testService;
 	}
 	
-	@RequestMapping(value = "/test.do", method= RequestMethod.GET)
-	public String select(Model model) {
-		model.addAttribute("data", testService.selectMethod());
-		return "sample/test";
-	}
-	
-	@RequestMapping(value = "/chart.do", method= RequestMethod.GET)
-	public String goChart(Model model) {
-		model.addAttribute("data", testService.selectMethod());
-		return "sample/chart";
-	}
-	
 	@ResponseBody
 	@RequestMapping(value = "/data.do", method = RequestMethod.GET)
 	public ResponseEntity<?> data() {

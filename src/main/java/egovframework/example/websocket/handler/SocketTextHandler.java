@@ -5,10 +5,10 @@ import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
 import org.springframework.web.socket.handler.TextWebSocketHandler;
 
-import egovframework.example.websocket.ReceiveMessage;
-import egovframework.example.websocket.ReceiveQueue;
 import egovframework.example.websocket.Session;
 import egovframework.example.websocket.SessionManager;
+import egovframework.example.websocket.receive.ReceiveMessage;
+import egovframework.example.websocket.receive.ReceiveQueue;
 
 public class SocketTextHandler extends TextWebSocketHandler {
 
@@ -30,9 +30,12 @@ public class SocketTextHandler extends TextWebSocketHandler {
 
 	@Override
 	protected void handleTextMessage(WebSocketSession session, TextMessage message) throws Exception {
-		ReceiveMessage receiveMessage = new ReceiveMessage();
-		receiveMessage.setMessage(message.getPayload());
-		receiveQueue.add(receiveMessage);
+		receiveQueue.add(
+				ReceiveMessage.builder()
+					.message(message.getPayload())
+					.session(session)
+					.build()
+				);
 	}
 
 	@Override

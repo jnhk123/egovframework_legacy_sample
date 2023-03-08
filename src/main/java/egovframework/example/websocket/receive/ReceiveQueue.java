@@ -1,4 +1,4 @@
-package egovframework.example.websocket;
+package egovframework.example.websocket.receive;
 
 import java.util.concurrent.LinkedBlockingQueue;
 
