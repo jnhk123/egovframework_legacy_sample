@@ -54,7 +54,7 @@
 		series : [ 
 			{
 				name : '그냥 값',
-				data : [1, 2, 4],
+				data : [],
 				pointStart : 1
 			} 
 		]
@@ -63,7 +63,7 @@
 	var sock = new SockJS("http://localhost:8080/ws/socket");
 
 	sock.onopen = function() {
-		sock.send('{"code" : 1}');
+		sock.send('{"code" : 1 }');
 	};
 
 	sock.onmessage = function(e) {
