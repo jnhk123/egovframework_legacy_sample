@@ -46,8 +46,10 @@ public class SocketServiceImpl extends EgovAbstractServiceImpl implements Socket
 
 	@Override
 	public void sendAll() {
+		//TODO Handler에서 remove되지 않은 Session을 가져올때 ??
 	 	List<WebSocketSession> webSocketSessions = sessionManager.getAllWebSocketSession();
 	 	
+	 	// add 메소드에서 추가한 session_id , session
 	 	String allDatas = chartDataRepository.getAllDatas();
 	 	
 	 	webSocketSessions.forEach(session -> sendQueue.add(

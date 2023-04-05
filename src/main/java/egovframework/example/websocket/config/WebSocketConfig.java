@@ -33,11 +33,12 @@ public class WebSocketConfig implements WebSocketConfigurer {
 	
 	@Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
+		// handler 추가 
         registry.addHandler(socketTextHandler(), "ws/socket")
                 .setAllowedOriginPatterns("*")
                 .withSockJS();
     }
-	
+	// Bean 등록 ->  객체를 생성하고 초기화하는 일을 개발자가 하지 않고 스프링 컨테이너에서 해줌
     @Bean
     public SocketTextHandler socketTextHandler() {
     	return new SocketTextHandler(receiveQueue(), sessionManager());

@@ -24,6 +24,7 @@ public class SocketController {
 
 	@PostMapping("/chart")
 	public ResponseEntity<?> add(@RequestBody Map<String, Object> body) {
+		// input.jsp 의 값을 Map 으로 받음 -> socketService.add -> returnType -> boolean 
 		if(socketService.add(body)) {
 			return ResponseEntity.ok(null);
 		} else {
