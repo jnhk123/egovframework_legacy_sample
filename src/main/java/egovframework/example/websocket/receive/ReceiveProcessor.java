@@ -44,7 +44,7 @@ public class ReceiveProcessor implements Runnable {
 				log.error("{}", e.getMessage(), e);
 			}
 		}
-		log.info("===> receive thread end <===");
+		log.info("===> receive thread stop <===");
 	}
 
 }

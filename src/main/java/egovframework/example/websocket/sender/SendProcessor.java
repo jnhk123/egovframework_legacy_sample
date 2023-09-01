@@ -41,7 +41,7 @@ public class SendProcessor implements Runnable{
 				log.error("{}", e.getMessage(), e);
 			}
 		}
-		log.info("===> send thread end <===");
+		log.info("===> send thread stop <===");
 	}
 	
 	
